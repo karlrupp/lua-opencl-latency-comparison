@@ -24,7 +24,7 @@ set output "lua-opencl-funcptr-time.eps"
 set logscale y
 set ylabel "Time (sec)"
 set xrange [40:4e4]
-set title "Latency Comparison of Lua, OpenCL, and C/C++ Function Pointers"
+set title "Latency Comparison for Array Summation (1 Thread, Core i3-3217U)"
 plot 'lua.txt'         using 1:2 with linesp ls 1 pt  5 ps 1.5 title "Lua 5.2", \
      'opencl.txt'      using 1:2 with linesp ls 2 pt  7 ps 1.5 title "Intel OpenCL 1.2, v5.0.0.43", \
      'funcptr.txt'     using 1:2 with linesp ls 3 pt  9 ps 1.5 title "Plain C/C++"
@@ -33,10 +33,10 @@ plot 'lua.txt'         using 1:2 with linesp ls 1 pt  5 ps 1.5 title "Lua 5.2", 
 # Plot bandwidth
 set key bottom right Left reverse invert
 set output "lua-opencl-funcptr-bandwidth.eps"
-set title "Bandwidth Comparison of Lua, OpenCL, and C/C++ Function Pointers"
+set title "Bandwidth Comparison for Array Summation (1 Thread, Core i3-3217U)"
 #set nolog y
-set ylabel "Bandwidth (GB/sec)"
-set xrange [10:1e6]
+set ylabel "Memory Bandwidth (GB/sec)"
+set xrange [40:1e6]
 plot 'lua.txt'        using 1:3 with linesp ls 1 pt  5 ps 1.5 title "Lua 5.2", \
      'opencl.txt'     using 1:3 with linesp ls 2 pt  7 ps 1.5 title "Intel OpenCL 1.2, v5.0.0.43", \
      'funcptr.txt'    using 1:3 with linesp ls 3 pt  9 ps 1.5 title "Plain C/C++"
