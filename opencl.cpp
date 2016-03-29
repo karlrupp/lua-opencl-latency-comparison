@@ -144,7 +144,7 @@ int main(int argc, char **argv)
         err = clSetKernelArg(kernel, 1, sizeof(cl_mem), &buf_sum); ERR_CHECK(err);
         err = clSetKernelArg(kernel, 2, sizeof(cl_uint), &buffer_size); ERR_CHECK(err);
         err = clEnqueueTask(queue, kernel, 0, NULL, NULL); ERR_CHECK(err);
-        err = clEnqueueReadBuffer(queue, buf_sum, CL_TRUE, 0, 0, &sum, 0, NULL, NULL); ERR_CHECK(err);
+        err = clEnqueueReadBuffer(queue, buf_sum, CL_TRUE, 0, sizeof(double), &sum, 0, NULL, NULL); ERR_CHECK(err);
 
         if (sum < 0)
           std::cerr << "Error: Computed sum negative!" << std::endl;
